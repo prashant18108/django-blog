@@ -13,6 +13,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category_name
+        # return f'{self.category_name} | {self.id}'
     
 
 STATUS_CHOICES = (
@@ -40,7 +41,6 @@ class Blog(models.Model):
         return super(Blog, self).save(*args, **kwargs)    
 
     class Meta:
-
         verbose_name = 'Blog'
         verbose_name_plural = 'Blogs'
 
