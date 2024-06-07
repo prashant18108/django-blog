@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'blogs',
+    'dashboards',
     'crispy_forms',
     'crispy_bootstrap4',
 ]

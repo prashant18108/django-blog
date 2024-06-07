@@ -48,7 +48,7 @@ def login(request):
             if user is not None:
                 print('user is found :: '+str(user))
                 auth.login(request, user)
-            return redirect('home')
+            return redirect('dashboard')
         else:
             print(form.errors)
     else:

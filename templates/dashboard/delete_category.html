@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+
+
+{% block content %}
+<div class="row">
+    <!-- Left sidebar -->
+    <!-- Load sidebar here -->
+    {% include 'dashboard/sidebar.html' %}
+
+    <!-- Right side content -->
+    <div class="col-md-9">
+        <h3>Delete Category</h3>
+        <form action="{% url 'delete_category' category.id %}" method="POST" style="width: 500px;">
+            {% csrf_token %}
+            <p>Are you sure you want to delete the <strong>{{category}}</strong> category?</p>
+            <button name="yes" type="submit" class="btn btn-warning">Confirm</button>
+            <button name="no" type="submit" class="btn btn-secondary">Cancel</button>
+        </form>
+        <br>
+    </div>
+</div>
+    
+{% endblock content %}

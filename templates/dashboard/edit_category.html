@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="row">
+    <!-- Left sidebar -->
+    <!-- Load sidebar here -->
+    {% include 'dashboard/sidebar.html' %}
+
+    <!-- Right side content -->
+    <div class="col-md-9">
+        <h2>Edit Category</h2>
+        <form action="{% url 'edit_category' category.id %}" method="POST" style="width: 500px;">
+            {% csrf_token %}
+            <!-- form.category_name|attr:"autofocus"|as_crispy_field -->
+            {{form|crispy}}
+            <button name="submit" type="submit" class="btn btn-warning">Submit</button>            
+            <button type="cancel" class="btn btn-secondary">Cancel</button>            
+        </form>
+        <br>
+    </div>
+</div>
+    
+{% endblock content %}
