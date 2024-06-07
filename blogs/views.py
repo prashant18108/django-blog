@@ -25,7 +25,7 @@ def blogs(request, slug):
 
 
 def search(request):
-    keyword = request.GET.get('keyword')
+    keyword = request.GET.get('keyword') # dict get method
     blogs = Blog.objects.filter(Q(title__icontains=keyword) | Q(short_description__icontains=keyword) | Q(blog_body__icontains=keyword), status='published')
     context = {
         'blogs':blogs,
