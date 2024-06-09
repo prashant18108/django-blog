@@ -10,7 +10,11 @@
         bg-warning
         {% endif %}
             ">Categories</a>
-        <a href="" class="nav-link text-dark">Blogs</a>
+        <a href="{% url 'posts' %}" class="nav-link text-dark
+        {% if '/posts/' in request.path %}
+        bg-warning            
+        {% endif %}
+            ">Blogs</a>
         <a href="" class="nav-link text-dark">Logout</a>
     </div>
 </div>
