@@ -3,29 +3,24 @@
 
 {% block content %}
 <h3 class="text-warning" style="letter-spacing: 2px;">Search term - {{keyword}}</h3>
-  <div class="row mb-2">
-    
-    {% if blogs %}
-    {% for item in blogs %}
-    <div class="col-md-6">
-      <div class="card border-0" >
-        <div class="card-body">
-          <a href="{% url 'blogs' item.slug %}" class="text-dark"><h3>{{item.title}}</h3></a>
-          <!-- <small class="mb-1 text-muted">{{ item.updated_at|date:'M d'}} | {{item.author}}</small> -->
-          <small class="mb-1 text-muted">{{ item.updated_at|timesince}} ago | {{item.author}}</small>
-          <p class="card-text">{{ item.short_description|truncatewords:25 }}</p>
-        </div>
+<div class="row mb-2">
+  {% if blogs %}
+  {% for item in blogs %}
+  <div class="col-md-6">
+    <div class="card border-0" >
+      <div class="card-body">
+        <a href="{% url 'blogs' item.slug %}" class="text-dark"><h3>{{item.title}}</h3></a>
+        <!-- <small class="mb-1 text-muted">{{ item.updated_at|date:'M d'}} | {{item.author}}</small> -->
+        <small class="mb-1 text-muted">{{ item.updated_at|timesince}} ago | {{item.author}}</small>
+        <p class="card-text">{{ item.short_description|truncatewords:25 }}</p>
       </div>
-    </div>    
-    {% endfor %}
-    {% else %}
-    <p>No Post found</p>
-    
-    {% endif %}
-        
-      
-  </div>
-    
+    </div>
+  </div>  
+  {% endfor %}
+  {% else %}
+  <p class="ml-3">No Post found</p>      
+  {% endif %}   
+</div>    
 {% endblock content %}
 
     

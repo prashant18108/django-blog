@@ -10,7 +10,7 @@
     <div class="col-md-8 px-0">
       <h1 class="display-4 font-italic"><a href="{% url 'blogs' item.slug %}" class="text-white">{{ item.title }}</a></h1>
       <p class="lead my-3">{{ item.short_description|truncatewords:25 }}</p>
-      <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+      <p class="lead mb-0"><a href="{% url 'blogs' item.slug %}" class="text-white font-weight-bold">Continue reading...</a></p>
     </div>
   </div>
     
