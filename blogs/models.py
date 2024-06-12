@@ -1,3 +1,4 @@
+from typing import Iterable
 from django.db import models
 
 from django.utils import timezone
@@ -38,7 +39,7 @@ class Blog(models.Model):
         if not self.id:
             self.created_at = timezone.now()
         self.updated_at = timezone.now()
-        return super(Blog, self).save(*args, **kwargs)    
+        return super(Blog, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Blog'
@@ -72,4 +73,22 @@ class SocialLink(models.Model):
 
     def __str__(self):
         return self.platform
+    
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    comment = models.TextField(max_length=250)
+    created_at = models.DateTimeField(editable=False)
+    updated_at = models.DateTimeField()
+
+    def save(self, *args, **kwargs):
+        ''' On save, update timestamps '''
+        if not self.id:
+            self.created_at = timezone.now()
+        self.updated_at = timezone.now()
+        return super(Comment, self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.comment
 

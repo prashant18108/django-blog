@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.http import HttpRequest
 
-from .models import Category, Blog, About, SocialLink
+from .models import Category, Blog, About, SocialLink, Comment
 
 
 class BlogAdmin(admin.ModelAdmin): 
@@ -17,9 +17,15 @@ class AboutAdmin(admin.ModelAdmin):
         if count == 0:
             return True
         return False
+    
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('comment', 'blog', 'user')
+    search_fields = ('comment', 'blog__title', 'user__username')
 
 
 admin.site.register(Category)
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(About, AboutAdmin)
 admin.site.register(SocialLink)
+admin.site.register(Comment, CommentAdmin)
